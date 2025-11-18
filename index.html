@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beginning | Classroom Journey</title>
+
+  <!-- Google Font (similar clean feel to TFIMainPage) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-alt: #020617;
+      --card-bg: #0b1220;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.18);
+      --border-subtle: rgba(148, 163, 184, 0.3);
+      --radius-lg: 1.5rem;
+      --radius-xl: 2rem;
+      --shadow-soft: 0 24px 60px rgba(15, 23, 42, 0.75);
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 55%);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: 1.25rem;
+      object-fit: cover;
+    }
+
+    .page-shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAVBAR */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.96),
+        rgba(15, 23, 42, 0.8),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border: 2px solid rgba(148, 163, 184, 0.65);
+      overflow: hidden;
+      background: radial-gradient(circle at 20% 0, #4ade80, #0f172a);
+      flex-shrink: 0;
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .brand-subtitle {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      position: relative;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.2rem;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #22c55e, #a855f7);
+      transition: width 0.2s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a.active {
+      color: #f9fafb;
+      font-weight: 500;
+    }
+
+    nav a.active::after {
+      width: 100%;
+    }
+
+    /* LAYOUT */
+    main {
+      flex: 1;
+    }
+
+    .section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 1.5rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.6fr);
+      gap: 2.25rem;
+      align-items: center;
+      padding-top: 2.5rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: radial-gradient(circle at 0 0, rgba(52, 211, 153, 0.25), transparent);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .eyebrow span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    .hero-title {
+      font-size: clamp(2.0rem, 3vw, 2.6rem);
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-highlight {
+      background-image: linear-gradient(to right, #22c55e, #a855f7);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.96rem;
+      color: var(--text-muted);
+      max-width: 36rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .pill {
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.7);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .pill strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .hero-media {
+      position: relative;
+    }
+
+    .hero-card {
+      padding: 0.5rem;
+      background: radial-gradient(circle at top left, #22c55e22, #020617);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .hero-caption {
+      margin-top: 0.45rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    .hero-caption span {
+      font-weight: 500;
+      color: #e5e7eb;
+    }
+
+    /* STAT STRIP */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 2.1rem;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border-radius: 1.25rem;
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+    }
+
+    .stat-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .stat-footnote {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* CONTENT SECTIONS */
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 2.1rem;
+      margin-top: 2.75rem;
+      align-items: flex-start;
+    }
+
+    .section-heading {
+      font-size: 1.25rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-bottom: 0.1rem;
+    }
+
+    .section-body {
+      font-size: 0.92rem;
+      color: var(--text-main);
+    }
+
+    .section-body p + p {
+      margin-top: 0.75rem;
+    }
+
+    .bullet-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem 1.4rem;
+      margin-top: 0.9rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .bullet-item {
+      padding-left: 0.9rem;
+      position: relative;
+    }
+
+    .bullet-item::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      position: absolute;
+      left: 0;
+      top: 0.45rem;
+    }
+
+    .image-stack {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .image-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+
+    .image-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* FULL-WIDTH PANEL */
+    .panel {
+      margin-top: 2.75rem;
+      padding: 1.5rem 1.4rem;
+      background: radial-gradient(circle at left, var(--accent-soft), #020617);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(74, 222, 128, 0.35);
+      display: grid;
+      grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.1fr);
+      gap: 1.8rem;
+      align-items: center;
+    }
+
+    .panel-title {
+      font-size: 1.15rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .panel p {
+      font-size: 0.9rem;
+    }
+
+    .panel p + p {
+      margin-top: 0.55rem;
+    }
+
+    .tag-row {
+      margin-top: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-size: 0.78rem;
+    }
+
+    .tag {
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    /* GALLERY STRIP */
+    .gallery-strip {
+      margin-top: 2.75rem;
+      padding: 1.3rem 1.2rem 1.4rem;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top, #22c55e1f, #020617);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .gallery-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .gallery-title-row h3 {
+      font-size: 1rem;
+    }
+
+    .gallery-title-row p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .gallery-grid img {
+      height: 140px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(30, 64, 175, 0.4);
+      margin-top: 3rem;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.25rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .footer-inner a {
+      font-weight: 500;
+      color: #a5b4fc;
+    }
+
+    @media (max-width: 960px) {
+      .hero,
+      .content-grid,
+      .panel {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .stats-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        display: none;
+      }
+
+      .stats-strip {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .section {
+        padding-inline: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <!-- NAVBAR -->
+    <header>
+      <div class="nav-inner">
+        <a href="https://iamvrajgopal.github.io/TFIMainPage" class="brand" target="_blank" rel="noopener">
+          <div class="brand-mark">
+            <!-- Optional: your profile image used in TFIMainPage -->
+            <img src="https://raw.githubusercontent.com/iamvrajgopal/TFIMainPage/main/Rajgopal%20.jpg" alt="Rajgopal" />
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">Varsha Nagar Classroom Journey</span>
+            <span class="brand-subtitle">Teach For India • 2024 Cohort</span>
+          </div>
+        </a>
+
+        <nav>
+          <a href="https://iamvrajgopal.github.io/TFIMainPage" target="_blank" rel="noopener">Main Page</a>
+          <a href="#" class="active">Beginning</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section hero">
+        <div>
+          <div class="eyebrow">
+            <span class="dot"></span>
+            <span>Chapter&nbsp;1</span>
+            <span>•</span>
+            <span>August&nbsp;2024</span>
+          </div>
+
+          <h1 class="hero-title">
+            The <span class="hero-highlight">Beginning</span> of our journey in Varsha Nagar.
+          </h1>
+
+          <p class="hero-subtitle">
+            In 2024 I joined Varsha Nagar Municipal School as a Teach For India fellow, stepping into four
+            grade&nbsp;8 classrooms where maths and science felt distant, difficult, and often discouraging.
+            This page captures where we started—our students, their community, and the reality inside the classroom.
+          </p>
+
+          <div class="hero-meta">
+            <div class="pill">
+              <strong>160</strong>
+              <span>students in Grade&nbsp;8</span>
+            </div>
+            <div class="pill">
+              <strong>120</strong>
+              <span>students in my Maths &amp; Science classes</span>
+            </div>
+            <div class="pill">
+              <strong>5 fellows</strong>
+              <span>teaching English, Maths, Science &amp; Social Studies</span>
+            </div>
+          </div>
+
+          <div class="stats-strip">
+            <div class="stat-card">
+              <div class="stat-label">Class strength</div>
+              <div class="stat-value">≈ 40</div>
+              <div class="stat-footnote">students per section</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Learning levels</div>
+              <div class="stat-value">29%</div>
+              <div class="stat-footnote">scoring below 35% in maths</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">High performers</div>
+              <div class="stat-value">5%</div>
+              <div class="stat-footnote">students scoring first class</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Context</div>
+              <div class="stat-value">Post-Covid</div>
+              <div class="stat-footnote">significant learning loss &amp; remote schooling</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <div class="hero-card">
+            <!-- Replace src paths with your actual image locations -->
+            <img src="https://raw.githubusercontent.com/iamvrajgopal/TFIBeginning/main/SchoolTeam.jpg" alt="Teach For India fellows and school team" />
+          </div>
+          <p class="hero-caption">
+            Teach For India team at Varsha Nagar Municipal School, 2024. <span>Our starting core team.</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- SCHOOL & COMMUNITY -->
+      <section class="section content-grid">
+        <div>
+          <div class="section-kicker">The school and its neighbourhood</div>
+          <h2 class="section-heading">Varsha Nagar: learning in the middle of Mumbai</h2>
+          <div class="section-body">
+            <p>
+              Varsha Nagar Municipal School sits at the intersection of two very different Mumbais. On one
+              side, high-rise buildings climb into the skyline; on the other, dense lanes of informal
+              settlements stretch across the hillside.
+            </p>
+            <p>
+              Most of my students come from families of migrant workers—auto drivers, daily wage labourers,
+              small food stall operators, carpenters, and shop owners. Many live in compact 1RK homes shared
+              by 4 to 10 family members. Space, time, and quiet for study are luxuries, not guarantees.
+            </p>
+
+            <div class="bullet-grid">
+              <div class="bullet-item">
+                Families balancing long work hours with the hope of better education for their children.
+              </div>
+              <div class="bullet-item">
+                Children often responsible for siblings, chores, and errands before and after school.
+              </div>
+              <div class="bullet-item">
+                Limited access to private tuitions or digital learning support.
+              </div>
+              <div class="bullet-item">
+                Strong community networks and a deep sense of resilience and humour.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="image-stack">
+          <img src="https://raw.githubusercontent.com/iamvrajgopal/TFIBeginning/main/SchoolPicture.JPG" alt="Varsha Nagar Municipal School building" />
+          <p class="image-note">
+            Varsha Nagar Municipal School building, where five fellows worked together across subjects and sections.
+          </p>
+          <img src="https://raw.githubusercontent.com/iamvrajgopal/TFIBeginning/main/Community.JPG" alt="View of the community surrounding the school" />
+          <p class="image-note">
+            A view from the students' community—crowded homes, narrow lanes, and a powerful drive to move upward.
+          </p>
+        </div>
+      </section>
+
+      <!-- CLASSROOM REALITY -->
+      <section class="section content-grid">
+        <div>
+          <div class="section-kicker">Academic starting point</div>
+          <h2 class="section-heading">When maths feels like a burden, not a language</h2>
+          <div class="section-body">
+            <p>
+              Years of disrupted schooling during Covid meant that many students missed foundational concepts
+              in mathematics. In our baseline, 29% of students scored below 35%, and only 5% secured a first
+              grade. For most children, maths and science were subjects to memorise—not ideas to understand.
+            </p>
+            <p>
+              Formulas were learnt by heart, steps were copied from the board, and success was measured by how
+              much could be remembered the night before an exam. Without concrete experiences or visualisation,
+              the subjects felt dry, abstract, and intimidating.
+            </p>
+            <p>
+              When I joined, the grade had gone without a consistent class teacher for more than a month. Class
+              culture had slipped—students were used to irregular periods, frequent free time, and very little
+              structure. Many children arrived without breakfast, bringing low energy and low motivation into
+              already demanding lessons.
+            </p>
+          </div>
+        </div>
+
+        <div class="image-stack">
+          <img src="https://raw.githubusercontent.com/iamvrajgopal/TFIBeginning/main/InClass.jpg" alt="Maths and science class in progress" />
+          <p class="image-note">
+            Early days in the classroom: rebuilding routines, revisiting basics, and slowly making maths visible again.
+          </p>
+        </div>
+      </section>
+
+      <!-- ENERGY & POSSIBILITY PANEL -->
+      <section class="section">
+        <div class="panel">
+          <div>
+            <div class="section-kicker">What stood out</div>
+            <h2 class="panel-title">Behind the low scores: vibrant, energetic children</h2>
+            <p>
+              Even as assessments painted a bleak academic picture, the children themselves were far from dull.
+              They were lively, playful, and eager to talk and move. Games on the ground, jokes in the corridor,
+              and curiosity about the world around them were always present.
+            </p>
+            <p>
+              The challenge was to channel that energy into learning—to design activities, experiments, and
+              simulations that allowed them to see, touch, and experience maths and science. If concepts could
+              be made visible and connected to real life, understanding and confidence could begin to grow.
+            </p>
+            <div class="tag-row">
+              <span class="tag">High energy classrooms</span>
+              <span class="tag">Love for games</span>
+              <span class="tag">Curiosity about the world</span>
+              <span class="tag">Need for structure &amp; care</span>
+            </div>
+          </div>
+          <div>
+            <img src="https://raw.githubusercontent.com/iamvrajgopal/TFIBeginning/main/CommunityVisit.JPG" alt="Walking with students in the community" />
+            <p class="image-note">
+              Walking back with students after school—conversations that helped build trust beyond the classroom walls.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- GALLERY STRIP -->
+      <section class="section">
+        <div class="gallery-strip">
+          <div class="gallery-title-row">
+            <h3>Snapshots from the beginning</h3>
+            <p>
+              A quick glimpse into the people and places that shaped our first few months together.
+            </p>
+          </div>
+          <div class="gallery-grid">
+            <img src="https://raw.githubusercontent.com/iamvrajgopal/TFIBeginning/main/SchoolTeam.jpg" alt="TFI team at school" />
+            <img src="https://raw.githubusercontent.com/iamvrajgopal/TFIBeginning/main/InClass.jpg" alt="Classroom teaching" />
+            <img src="https://raw.githubusercontent.com/iamvrajgopal/TFIBeginning/main/CommunityVisit.JPG" alt="Students walking home" />
+            <img src="https://raw.githubusercontent.com/iamvrajgopal/TFIBeginning/main/Community.JPG" alt="Students' neighbourhood" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <span>
+          Beginning • Varsha Nagar Municipal School • Teach For India 2024–26
+        </span>
+        <span>
+          Return to
+          <a href="https://iamvrajgopal.github.io/TFIMainPage" target="_blank" rel="noopener">
+            Main Page
+          </a>
+        </span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
