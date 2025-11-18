@@ -15,17 +15,17 @@
 
   <style>
     :root {
-      --bg: #0f172a;
-      --bg-alt: #020617;
-      --card-bg: #0b1220;
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
-      --accent: #22c55e;
-      --accent-soft: rgba(34, 197, 94, 0.18);
-      --border-subtle: rgba(148, 163, 184, 0.3);
+      --bg: #f5f1e8;
+      --bg-alt: #ece3d4;
+      --card-bg: #ffffff;
+      --text-main: #1f2933;
+      --text-muted: #6b7280;
+      --accent: #c47a3c;
+      --accent-soft: rgba(196, 122, 60, 0.12);
+      --border-subtle: rgba(148, 163, 184, 0.5);
       --radius-lg: 1.5rem;
       --radius-xl: 2rem;
-      --shadow-soft: 0 24px 60px rgba(15, 23, 42, 0.75);
+      --shadow-soft: 0 18px 45px rgba(148, 131, 112, 0.35);
       --max-width: 1120px;
     }
 
@@ -38,7 +38,7 @@
     body {
       font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1e293b 0, #020617 55%);
+      background: radial-gradient(circle at top, #fdfaf3 0, #f4ebdd 55%);
       color: var(--text-main);
       line-height: 1.6;
       min-height: 100vh;
@@ -70,11 +70,11 @@
       backdrop-filter: blur(18px);
       background: linear-gradient(
         to bottom,
-        rgba(15, 23, 42, 0.96),
-        rgba(15, 23, 42, 0.8),
+        rgba(245, 241, 232, 0.96),
+        rgba(245, 241, 232, 0.88),
         transparent
       );
-      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.45);
     }
 
     .nav-inner {
@@ -97,9 +97,9 @@
       width: 38px;
       height: 38px;
       border-radius: 999px;
-      border: 2px solid rgba(148, 163, 184, 0.65);
+      border: 2px solid rgba(148, 163, 184, 0.8);
       overflow: hidden;
-      background: radial-gradient(circle at 20% 0, #4ade80, #0f172a);
+      background: radial-gradient(circle at 20% 0, #facc6b, #c47a3c);
       flex-shrink: 0;
     }
 
@@ -147,7 +147,7 @@
       width: 0;
       height: 2px;
       border-radius: 999px;
-      background: linear-gradient(to right, #22c55e, #a855f7);
+      background: linear-gradient(to right, #c47a3c, #8b5cf6);
       transition: width 0.2s ease;
     }
 
@@ -156,7 +156,7 @@
     }
 
     nav a.active {
-      color: #f9fafb;
+      color: #111827;
       font-weight: 500;
     }
 
@@ -189,8 +189,8 @@
       gap: 0.45rem;
       padding: 0.25rem 0.7rem;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      background: radial-gradient(circle at 0 0, rgba(52, 211, 153, 0.25), transparent);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: radial-gradient(circle at 0 0, rgba(196, 122, 60, 0.2), transparent);
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.14em;
@@ -202,7 +202,7 @@
       width: 6px;
       height: 6px;
       border-radius: 999px;
-      background: #22c55e;
+      background: var(--accent);
     }
 
     .hero-title {
@@ -212,7 +212,7 @@
     }
 
     .hero-highlight {
-      background-image: linear-gradient(to right, #22c55e, #a855f7);
+      background-image: linear-gradient(to right, #c47a3c, #8b5cf6);
       -webkit-background-clip: text;
       color: transparent;
     }
@@ -235,15 +235,15 @@
     .pill {
       padding: 0.35rem 0.75rem;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(255, 255, 255, 0.9);
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
     }
 
     .pill strong {
-      color: #e5e7eb;
+      color: #111827;
       font-weight: 500;
     }
 
@@ -253,9 +253,9 @@
 
     .hero-card {
       padding: 0.5rem;
-      background: radial-gradient(circle at top left, #22c55e22, #020617);
+      background: radial-gradient(circle at top left, rgba(196, 122, 60, 0.16), var(--bg));
       border-radius: var(--radius-xl);
-      border: 1px solid rgba(148, 163, 184, 0.5);
+      border: 1px solid rgba(148, 163, 184, 0.7);
       box-shadow: var(--shadow-soft);
       overflow: hidden;
     }
@@ -269,7 +269,7 @@
 
     .hero-caption span {
       font-weight: 500;
-      color: #e5e7eb;
+      color: #111827;
     }
 
     /* STAT STRIP */
@@ -288,6 +288,7 @@
       display: flex;
       flex-direction: column;
       gap: 0.2rem;
+      box-shadow: 0 10px 25px rgba(148, 131, 112, 0.18);
     }
 
     .stat-label {
@@ -357,7 +358,7 @@
       width: 6px;
       height: 6px;
       border-radius: 999px;
-      background: #22c55e;
+      background: var(--accent);
       position: absolute;
       left: 0;
       top: 0.45rem;
@@ -384,13 +385,14 @@
     .panel {
       margin-top: 2.75rem;
       padding: 1.5rem 1.4rem;
-      background: radial-gradient(circle at left, var(--accent-soft), #020617);
+      background: radial-gradient(circle at left, var(--accent-soft), var(--bg-alt));
       border-radius: var(--radius-xl);
-      border: 1px solid rgba(74, 222, 128, 0.35);
+      border: 1px solid rgba(196, 122, 60, 0.45);
       display: grid;
       grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.1fr);
       gap: 1.8rem;
       align-items: center;
+      box-shadow: var(--shadow-soft);
     }
 
     .panel-title {
@@ -417,8 +419,8 @@
     .tag {
       padding: 0.3rem 0.7rem;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.6);
     }
 
     /* GALLERY STRIP */
@@ -426,8 +428,9 @@
       margin-top: 2.75rem;
       padding: 1.3rem 1.2rem 1.4rem;
       border-radius: var(--radius-xl);
-      background: radial-gradient(circle at top, #22c55e1f, #020617);
-      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: radial-gradient(circle at top, rgba(196, 122, 60, 0.13), var(--bg-alt));
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      box-shadow: 0 16px 38px rgba(148, 131, 112, 0.28);
     }
 
     .gallery-title-row {
@@ -458,8 +461,9 @@
     }
 
     footer {
-      border-top: 1px solid rgba(30, 64, 175, 0.4);
+      border-top: 1px solid rgba(148, 163, 184, 0.7);
       margin-top: 3rem;
+      background: rgba(245, 241, 232, 0.9);
     }
 
     .footer-inner {
@@ -477,7 +481,9 @@
 
     .footer-inner a {
       font-weight: 500;
-      color: #a5b4fc;
+      color: #4b5563;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
     }
 
     @media (max-width: 960px) {
@@ -520,9 +526,9 @@
     <!-- NAVBAR -->
     <header>
       <div class="nav-inner">
-        <a href="https://iamvrajgopal.github.io/TFIMainPage" class="brand" target="_blank" rel="noopener">
+        <!-- Brand now opens in SAME tab -->
+        <a href="https://iamvrajgopal.github.io/TFIMainPage" class="brand">
           <div class="brand-mark">
-            <!-- Optional: your profile image used in TFIMainPage -->
             <img src="https://raw.githubusercontent.com/iamvrajgopal/TFIMainPage/main/Rajgopal%20.jpg" alt="Rajgopal" />
           </div>
           <div class="brand-text">
@@ -532,7 +538,8 @@
         </a>
 
         <nav>
-          <a href="https://iamvrajgopal.github.io/TFIMainPage" target="_blank" rel="noopener">Main Page</a>
+          <!-- Main Page now opens in SAME tab -->
+          <a href="https://iamvrajgopal.github.io/TFIMainPage">Main Page</a>
           <a href="#" class="active">Beginning</a>
         </nav>
       </div>
@@ -599,7 +606,6 @@
 
         <div class="hero-media">
           <div class="hero-card">
-            <!-- Replace src paths with your actual image locations -->
             <img src="https://raw.githubusercontent.com/iamvrajgopal/TFIBeginning/main/SchoolTeam.jpg" alt="Teach For India fellows and school team" />
           </div>
           <p class="hero-caption">
@@ -745,7 +751,8 @@
         </span>
         <span>
           Return to
-          <a href="https://iamvrajgopal.github.io/TFIMainPage" target="_blank" rel="noopener">
+          <!-- Main Page in SAME tab -->
+          <a href="https://iamvrajgopal.github.io/TFIMainPage">
             Main Page
           </a>
         </span>
